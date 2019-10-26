@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+
+{% block innihald %}
+    {%for i in oneco%}
+        <p><img src="/static/{{i}}.png"><a href="/company/{{i}}">{{i}}</a></p>
+    {%endfor%}
+    <div class="upplysingar">
+        <h1>Besta verðið</h1>
+        <p>Ódýrasta bensínið: {{minbensin}} kr. er hjá {{bensinnafn}}, {{nafnbensinstodvar}}</p>
+        <p>Ódýrasta díesel olían: {{mindiesel}} kr. er hjá {{dieselnafn}}, {{nafndieselstodvar}}</p>
+        <p>Síðast uppfært: {{ 0 | getdate }}</p>
+    </div>
+{% endblock %}

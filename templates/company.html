@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block innihald %}
+    <ul>
+        {%for i in stodvar%}
+            <li><a href="/{{i["company"]}}/{{i["name"]}}">{{i["name"]}}</a></li>
+        {%endfor%}
+    </ul>
+{% endblock %}

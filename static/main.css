@@ -1,0 +1,14 @@
+body{
+	font-family: sans-serif;
+    background:#c9c7c6;
+	margin: 0 1em 1em 1em;
+}
+
+.upplysingar{
+	max-width: 25em;
+	margin: 1em auto;
+	padding: 0 1em;
+	border: 1px solid;
+	background-color: #efff00;
+    border-radius: 5px;
+}
