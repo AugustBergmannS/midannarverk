@@ -61,7 +61,7 @@ def index():
         if x['company'] not in oneco:
             oneco.append(x['company'])
     cheapest = min()
-    return render_template("index.html",oneco = oneco, nafnbensinstodvar = cheapest["nafnbensinstodvar"], nafndieselstodvar = cheapest["nafndieselstodvar"], minbensin = cheapest["bensin"], mindiesel = cheapest["diesel"], bensinnafn = cheapest["bensin-nafn"], dieselnafn = cheapest["diesel-nafn"])
+    return render_template("index.tpl",oneco = oneco, nafnbensinstodvar = cheapest["nafnbensinstodvar"], nafndieselstodvar = cheapest["nafndieselstodvar"], minbensin = cheapest["bensin"], mindiesel = cheapest["diesel"], bensinnafn = cheapest["bensin-nafn"], dieselnafn = cheapest["diesel-nafn"])
 
 @app.route("/company/<nafn>")
 def fyrirtaeki(nafn):
@@ -69,7 +69,8 @@ def fyrirtaeki(nafn):
     for x in li:
         if x["company"] == nafn:
             stodvar.append(x)
-    return render_template("company.html", stodvar = stodvar)
+    x = len(stodvar)
+    return render_template("company.tpl", stodvar = stodvar, fjoldi = x)
 
 @app.route("/<company>/<nafn>")
 def moreinfo(company,nafn):
@@ -78,13 +79,13 @@ def moreinfo(company,nafn):
         if x["name"] == nafn:
             stod = x
             break
-    return render_template("moreinfo.html", soluadili = company, nafn = nafn, bensin = stod["bensin95"], diesel = stod["diesel"], stadsetning = (stod["geo"]["lat"],stod["geo"]["lon"]))
+    return render_template("moreinfo.tpl", soluadili = company, nafn = nafn, bensin = stod["bensin95"], diesel = stod["diesel"], lat = stod["geo"]["lat"], lon = stod["geo"]["lon"])
     
 #-------------------run---------------------
 
 @app.errorhandler(404)
 def error404(error):
-	return render_template("404.html"),404
+	return render_template("404.tpl"),404
 
 if __name__ == "__main__":
 	app.run(debug=True)
