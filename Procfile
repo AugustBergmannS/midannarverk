@@ -1,1 +1,1 @@
-web: Ágúst Bergmann Sigurðsson app:app
+web: gunicorn app:app --log-file=-
